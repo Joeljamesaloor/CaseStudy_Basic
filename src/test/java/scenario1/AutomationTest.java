@@ -33,4 +33,5 @@ public class AutomationTest extends BaseTest {
         Assert.assertTrue(contactPage.isMessageSentDisplayed());
     }
 
+
 }
