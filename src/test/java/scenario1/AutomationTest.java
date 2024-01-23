@@ -2,27 +2,17 @@ package scenario1;
 
 import Scenario1.ContactPage;
 import Scenario1.HomePage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import common.BaseTest;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
-public class AutomationTest {
-    private WebDriver driver;
+public class AutomationTest extends BaseTest {
     private HomePage homePage;
     private ContactPage contactPage;
     private final String baseUrl = "https://automationpanda.com/2021/12/29/want-to-practice-test-automation-try-these-demo-sites/";
 
     @BeforeClass
     public void setup() {
-        // Set the path for the chromedriver relative to the project root directory
-        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver"); // Ensure this path is correct
-
-        // Initialize the ChromeDriver instance
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
         driver.get(baseUrl);
         homePage = new HomePage(driver);
         contactPage = new ContactPage(driver);
@@ -30,7 +20,6 @@ public class AutomationTest {
 
     @Test(priority = 1)
     public void verifyContactTitle() throws InterruptedException {
-        HomePage homePage = new HomePage(driver);
         homePage.clickOnContactLink();
         String expectedContactTitle = "CONTACT"; // The expected text of the <h1> element
         String contactTitleText = homePage.getContactTitleText();
@@ -44,10 +33,4 @@ public class AutomationTest {
         Assert.assertTrue(contactPage.isMessageSentDisplayed());
     }
 
-    @AfterClass
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
 }

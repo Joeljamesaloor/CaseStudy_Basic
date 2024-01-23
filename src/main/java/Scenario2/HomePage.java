@@ -32,9 +32,9 @@ public class HomePage {
         return items.size(); // Returns the number of product items found
     }
 
-    public void enterSearchTerm(String searchTerm) {
+    public void enterSearchTerm() {
         WebElement searchBoxElement = driver.findElement(searchBox1);
-        searchBoxElement.sendKeys(searchTerm + Keys.ENTER);
+        searchBoxElement.sendKeys("iphone 14" + Keys.ENTER);
     }
 
 

@@ -30,6 +30,12 @@
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>5.0.3</version> <!-- Use the latest version -->
+    </dependency>
+
     <!-- You already have JUnit dependency, if you are not using it, you might remove or keep it. -->
     <dependency>
       <groupId>junit</groupId>

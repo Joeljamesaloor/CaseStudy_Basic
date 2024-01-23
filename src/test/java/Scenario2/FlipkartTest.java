@@ -1,27 +1,17 @@
 package Scenario2;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import common.BaseTest;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
-public class FlipkartTest {
-    private WebDriver driver;
+public class FlipkartTest extends BaseTest {
     private HomePage homePage;
     private ProductPage productPage;
     private final String baseUrl = "https://www.flipkart.com/";
 
     @BeforeClass
     public void setup() {
-        // Set the path for the chromedriver
-        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
-
-        // Initialize the ChromeDriver instance
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get(baseUrl); // Use baseUrl variable
+        driver.get(baseUrl);
         homePage = new HomePage(driver);
         productPage = new ProductPage(driver);
     }
@@ -37,7 +27,7 @@ public class FlipkartTest {
 
     @Test(priority = 2)
     public void enterSearchTerm() {
-        homePage.enterSearchTerm("iphone 14");
+        homePage.enterSearchTerm();
         System.out.println("Search term 'iphone 14' entered.");
     }
 
@@ -54,11 +44,5 @@ public class FlipkartTest {
 
     }
 
-    @AfterClass
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
 
 }
